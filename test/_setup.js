@@ -17,3 +17,15 @@ var Post = Backbone.Model.extend({
         slug:       {}
     }
 });
+
+var DynamicPost = Post.extend({
+
+	schema: function(){
+		return {
+			title:      { type: 'Text' },
+			content:    { type: 'TextArea' },
+			author:     {},
+			slug:       {}
+		}
+	}
+});

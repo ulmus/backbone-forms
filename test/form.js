@@ -29,6 +29,19 @@ test("'schema' option - If not present, the 'schema' attribute on the model is u
     equal($('input:eq(0)', form.el).attr('id'), 'name');
 });
 
+test("'model' option - the 'schema' function on the model is used", function() {
+    var post = new DynamicPost();
+
+    var form = new Form({
+        model: post
+    }).render();
+
+    //Check correct fields have been added
+	equal($('#title', form.el).val(), 'Danger Zone!');
+	 equal($('#author', form.el).val(), 'Sterling Archer');
+});
+
+
 test("'model' option - Populates the form", function() {
     var post = new Post();
 
