@@ -102,7 +102,7 @@
         args.push(callback);
         
         fn.apply(context, args);
-    }
+    };
 
     helpers.getValidator = function(validator) {
         var isRegExp = _(validator).isRegExp();
@@ -147,7 +147,7 @@
         
         events: {
             "submit"  :  "doCommit",
-            "reset"  :  "doCancel",
+            "reset"  :  "doCancel"
         },
 
         buttonHtml: '<fieldset class="form-actions"><button type="submit" class="btn primary">Save changes</button><button type="reset" class="btn">Cancel</button></fieldset>',
@@ -163,7 +163,7 @@
          *          legend  {String} : Form legend
          */
         initialize: function(options) {
-            this.schema = options.schema || (options.model ? options.model.schema : {}),
+            this.schema = options.schema || (options.model ? _.isFunction(options.model.schema) ? options.model.schema() : options.model.schema : {});
             this.model = options.model;
             this.data = options.data;
             this.legend = options.legend;
