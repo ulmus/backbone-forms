@@ -295,8 +295,8 @@ module('checkbox');
     test('Correct type', function() {
         var field = new editor().render();
         
-        deepEqual($(field.el).get(0).tagName, 'INPUT');
-        deepEqual($(field.el).attr('type'), 'checkbox');
+        deepEqual($(field.el).get(0).tagName, 'LABEL');
+        deepEqual($(field.el).find('input').attr('type'), 'checkbox');
     });
     
     test("getValue() - returns boolean", function() {
@@ -321,7 +321,7 @@ module('checkbox');
         field.setValue(true);
         
         deepEqual(field.getValue(), true);
-        deepEqual($(field.el).attr('checked'), 'checked');
+        deepEqual(field.$('input').attr('checked'), 'checked');
     });
     
 })();
@@ -508,7 +508,7 @@ module('Radio');
         var field = new editor({
             schema: schema
         }).render();
-        equal($(field.el).get(0).tagName, 'UL');
+        equal($(field.el).get(0).tagName, 'LABEL');
         notEqual($(field.el).find('input[type=radio]').length, 0);
     });
 
